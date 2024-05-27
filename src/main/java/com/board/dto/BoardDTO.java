@@ -8,8 +8,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor //기본 생성자
-@AllArgsConstructor //모든 필드를 매개변수로 하는 생성자
 // DTO(Data Transfer Object), VO, Bean
 public class BoardDTO {
 
@@ -35,4 +33,17 @@ public class BoardDTO {
         return boardDTO;
     }
 
+    public BoardDTO(long id, String boardWriter, String boardPass, String boardTitle, String boardContest, int boardHits, LocalDateTime boardCreatedTime, LocalDateTime boardUpdatedTime) {
+        this.id = id;
+        this.boardWriter = boardWriter;
+        this.boardPass = boardPass;
+        this.boardTitle = boardTitle;
+        this.boardContest = boardContest;
+        this.boardHits = boardHits;
+        this.boardCreatedTime = boardCreatedTime;
+        this.boardUpdatedTime = boardUpdatedTime;
+    }
+
+    public BoardDTO() {
+    }
 }
