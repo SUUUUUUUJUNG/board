@@ -15,7 +15,7 @@ public class BoardDTO {
     private String boardWriter;
     private String boardPass;
     private String boardTitle;
-    private String boardContest;
+    private String boardContents;
     private int boardHits;
     private LocalDateTime boardCreatedTime;
     private LocalDateTime boardUpdatedTime;
@@ -26,19 +26,19 @@ public class BoardDTO {
         boardDTO.setBoardWriter(boardEntity.getBoardWriter());
         boardDTO.setBoardPass(boardEntity.getBoardPass());
         boardDTO.setBoardTitle(boardEntity.getBoardTitle());
-        boardDTO.setBoardContest(boardEntity.getBoardContents());
+        boardDTO.setBoardContents(boardEntity.getBoardContents());
         boardDTO.setBoardHits(boardEntity.getBoardHits());
         boardDTO.setBoardCreatedTime(boardEntity.getCreatedTime());
         boardDTO.setBoardUpdatedTime(boardEntity.getUpdatedTime());
         return boardDTO;
     }
 
-    public BoardDTO(long id, String boardWriter, String boardPass, String boardTitle, String boardContest, int boardHits, LocalDateTime boardCreatedTime, LocalDateTime boardUpdatedTime) {
+    public BoardDTO(long id, String boardWriter, String boardPass, String boardTitle, String boardContents, int boardHits, LocalDateTime boardCreatedTime, LocalDateTime boardUpdatedTime) {
         this.id = id;
         this.boardWriter = boardWriter;
         this.boardPass = boardPass;
         this.boardTitle = boardTitle;
-        this.boardContest = boardContest;
+        this.boardContents = boardContents;
         this.boardHits = boardHits;
         this.boardCreatedTime = boardCreatedTime;
         this.boardUpdatedTime = boardUpdatedTime;
