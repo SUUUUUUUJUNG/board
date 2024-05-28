@@ -19,15 +19,23 @@
         <td th:text="${board.boardWriter}"></td>
     </tr>
     <tr>
+        <th>contents</th>
+        <td th:text="${board.boardContents}"></td>
+    </tr>
+    <tr>
         <th>date</th>
         <td th:text="${board.boardCreatedTime}"></td>
+    </tr>
+    <tr>
+        <th>hits</th>
+        <td th:text="${board.boardHits}"></td>
     </tr>
 </table>
 <button onclick="ListReq()">목록</button>
 <button onclick="updateReq()">수정</button>
 <button onclick="deleteReq()">삭제</button>
 </body>
-<script>
+<script th:inLine="javascript">
     const ListReq = () => {
         console.log("상세조회 목록");
         location.href="/board";
