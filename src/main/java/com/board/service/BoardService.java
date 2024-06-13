@@ -2,6 +2,8 @@ package com.board.service;
 
 import com.board.dto.BoardDTO;
 import com.board.entity.BoardEntity;
+import com.board.entity.BoardFileEntity;
+import com.board.repository.BoardFileRepository;
 import com.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,7 @@ import java.util.Optional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final BoardFileRepository boardFileRepository;
 
     public void save(BoardDTO boardDTO) throws IOException {
         // 파일 첨부 여부에 따라 로직 분리
@@ -52,6 +54,12 @@ public class BoardService {
         String storedFileName = System.currentTimeMillis() + originalFilename; //3.
         String savePath = "C:/springboot_img/" + storedFileName; //4. //C:/springboot_img/8397945651_내사진
         boardFile.transferTo(new File(savePath)); //5.
+        BoardEntity boardEntity = BoardEntity.toSaveFileEntity(boardDTO);
+        Long savedId =  boardRepository.save(boardEntity).getId();
+        BoardEntity board = boardRepository.findById(savedId).get();
+
+        BoardFileEntity boardFileEntity = BoardFileEntity.toBoardFileEntity(board, originalFilename, storedFileName);
+        boardFileRepository.save(boardFileEntity);
     }
 
     public List<BoardDTO> findAll() {
