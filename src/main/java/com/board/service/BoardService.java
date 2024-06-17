@@ -62,6 +62,7 @@ public class BoardService {
         boardFileRepository.save(boardFileEntity);
     }
 
+    @Transactional
     public List<BoardDTO> findAll() {
         List<BoardEntity> boardEntityList = boardRepository.findAll();
         List<BoardDTO> boardDTOList = new ArrayList<>();
